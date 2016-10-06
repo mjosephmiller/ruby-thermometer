@@ -1,0 +1,8 @@
+h1 Temperature:
+= @temperature + "°c"
+h1 The current city is:
+= @city
+
+form action="/" method="POST"
+    input type="text" name="city"
+    input.button type="submit" value="Choose City >>"
