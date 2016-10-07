@@ -3,17 +3,18 @@ require 'dotenv'
 
 class Thermometer
 
-  attr_reader :temperature, :city, :weather_hash
+  attr_reader :temperature, :city, :weather_hash, :country
   attr_accessor :temperature, :weather_hash
 
-  def initialize(city)
+  def initialize(city, country)
     @temperature = []
     @city = city
+    @country = country
     @weather_hash = {}
   end
 
   def get_temp
-    @weather_hash = HTTParty.get("http://api.wunderground.com/api/" + "#{ENV["WEATHER_API"]}" + "/hourly10day/lang:NL/q/IT/#{@city}.xml")
+    @weather_hash = HTTParty.get("http://api.wunderground.com/api/" + "#{ENV["WEATHER_API"]}" + "/hourly10day/lang:NL/q/#{@country}/#{@city}.xml")
   end
 
   def assign_values

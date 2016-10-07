@@ -10,12 +10,13 @@ class ThermometerApp < Sinatra::Base
   end
 
   post '/' do
-    city = params[:city]
-    thermometer = Thermometer.new(city)
+    @city = params[:city]
+    @country = params[:country]
+    thermometer = Thermometer.new(@city, @country)
     thermometer.get_temp
     thermometer.assign_values
     @temperature = thermometer.temperature
-    @city = city.split(/ |\_|\-/).map(&:capitalize).join(" ")
+    @city = @city.split(/ |\_|\-/).map(&:capitalize).join(" ")
     slim :city
   end
 
