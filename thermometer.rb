@@ -1,5 +1,3 @@
-require 'open-uri'
-require 'json'
 require 'httparty'
 require 'dotenv'
 
